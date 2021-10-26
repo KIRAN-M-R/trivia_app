@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-
-import 'api_trivia.dart';
+import 'package:trivia_app/api_trivia.dart';
+import 'package:trivia_app/model/questions.dart';
 
 class Secondpage extends StatefulWidget {
   const Secondpage({Key? key}) : super(key: key);
@@ -10,6 +10,7 @@ class Secondpage extends StatefulWidget {
 }
 
 class _SecondpageState extends State<Secondpage> {
+  final ApiTrivia _apitrivia = ApiTrivia();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -22,15 +23,15 @@ class _SecondpageState extends State<Secondpage> {
 
   _futureWidget() {
     return FutureBuilder(
-      future: getStates(),
+      future: _apitrivia.getStates(),
       builder: (context, snapshot) {
         if (snapshot.hasData) {
-          List stateList = snapshot.data as List;
+          List results = snapshot.data as List;
           return ListView.builder(
-            itemCount: stateList.length,
+            itemCount: results.length,
             itemBuilder: (context, position) {
               return Center(
-                  child: Text('${stateList.elementAt(position).stateName}'));
+                  child: Text('${results.elementAt(position).question}'));
             },
           );
         } else {
