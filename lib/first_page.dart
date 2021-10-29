@@ -1,5 +1,5 @@
 import 'dart:ui';
-
+import 'package:trivia_app/extractdata.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:trivia_app/second_page.dart';
@@ -12,6 +12,7 @@ class FirstPage extends StatefulWidget {
 }
 
 class _FirstPageState extends State<FirstPage> {
+
   final ButtonStyle raisedButtonStyle = ElevatedButton.styleFrom(
     onPrimary: Colors.yellow,
     minimumSize: Size(88, 36),
@@ -46,7 +47,8 @@ class _FirstPageState extends State<FirstPage> {
                 'TAKE TRIVIA ->',
                 style: TextStyle(color: Colors.black),
               ),
-            )
+            ),
+
           ],
         ),
       ),

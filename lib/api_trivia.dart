@@ -31,10 +31,14 @@ class ApiTrivia {
       var body = response.body;
       var statesJsonArray = json.decode(body)['results'];
 
-      List<Results> results =
-          (statesJsonArray as List).map((e) => Results.fromJson(e)).toList();
+      try {
+        List<Results> results =
+            (statesJsonArray as List).map((e) => Results.fromJson(e)).toList();
 
-      return results;
+        return results;
+      } catch (e) {
+        log('try failed $e');
+      }
     } else {
       log('api request failed ${response.body}');
 
