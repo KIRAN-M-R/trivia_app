@@ -23,7 +23,7 @@ import 'package:trivia_app/model/questions.dart';
 
 class ApiTrivia {
   Future<List<Results>?> getStates() async {
-    Uri url = Uri.parse("https://opentdb.com/api.php?amount=10");
+    Uri url = Uri.parse("https://opentdb.com/api.php?amount=10&difficulty=easy&type=multiple");
 
     var response = await http.get(url);
     if (response.statusCode == 200) {

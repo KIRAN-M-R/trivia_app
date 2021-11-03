@@ -1,3 +1,4 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:trivia_app/api_trivia.dart';
 import 'package:trivia_app/model/questions.dart';
@@ -22,18 +23,36 @@ class _SecondpageState extends State<Secondpage> {
   }
 
   _futureWidget() {
+
+
+
     return FutureBuilder(
       future: _apitrivia.getStates(),
       builder: (context, snapshot) {
         if (snapshot.hasData) {
           List results = snapshot.data as List;
-          return ListView.builder(
-            itemCount: results.length,
-            itemBuilder: (context, position) {
-              return Center(
-                  child: Text('${results.elementAt(position).question}'));
+          return  PageView.builder(
+
+             //create a controller above build method
+            itemCount: 10,
+            itemBuilder : (context, index) {
+              return Container(
+                child: Column(crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text('Question ${index + 1}',style: TextStyle(fontSize: 20,fontWeight: FontWeight.bold),),
+                    Text('            '),
+                    Text('${results.elementAt(index).question}',style: TextStyle(fontSize: 30,fontWeight: FontWeight.w400),),
+                    // ElevatedButton(onPressed: (){}, child: Text('  ${results.elementAt(index).incorrect_answers[0]}  ')),
+                    // ElevatedButton(onPressed: (){}, child: Text('  ${results.elementAt(index).incorrect_answers[1]}  ')),
+                    // ElevatedButton(onPressed: (){}, child: Text('  ${results.elementAt(index).incorrect_answers[2]}  ')),
+                    // ElevatedButton(onPressed: (){}, child: Text('  ${results.elementAt(index).correct_answer}  '))
+                    _buttons(results,index),
+                  ],
+                ),
+              );
             },
           );
+
         } else {
           return Center(child: CircularProgressIndicator());
         }
@@ -42,4 +61,11 @@ class _SecondpageState extends State<Secondpage> {
   }
 }
 
+_buttons(results,index){
+  return Column(children: [ ElevatedButton(onPressed: (){}, child: Text('  ${results.elementAt(index).incorrect_answers[0]}  ')),
+    ElevatedButton(onPressed: (){}, child: Text('  ${results.elementAt(index).incorrect_answers[1]}  ')),
+    ElevatedButton(onPressed: (){}, child: Text('  ${results.elementAt(index).incorrect_answers[2]}  ')),
+    ElevatedButton(onPressed: (){}, child: Text('  ${results.elementAt(index).correct_answer}  '))],);
+
+}
 
