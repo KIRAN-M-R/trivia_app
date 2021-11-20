@@ -24,35 +24,22 @@ class _FirstPageState extends State<FirstPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Center(
+      body: Container(
+        width: double.infinity,
         child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          crossAxisAlignment: CrossAxisAlignment.center,
+          // mainAxisAlignment: MainAxisAlignment.center,
+          // crossAxisAlignment: CrossAxisAlignment.center,
           children: [
-            Container(
-              padding: EdgeInsets.all(85),
-              decoration: BoxDecoration(
-                  shape: BoxShape.circle,
-                  color: Colors.blueGrey[800],
-                  boxShadow: [
-                    BoxShadow(
-                      color: Colors.white.withAlpha(60),
-                      blurRadius: 6.0,
-                      spreadRadius: 4.0,
-                    ),
-                  ]),
-              child: Column(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    Text(
-                      'TRIVIA  APP',
-                      textAlign: TextAlign.center,
-                      style: GoogleFonts.rubik(
-                        fontSize: 35,
-                        fontWeight: FontWeight.w600,
-                      ),
-                    ),
-                  ]),
+            SizedBox(
+              height: 300,
+            ),
+            Text(
+              'TRIVIA APP',
+              textAlign: TextAlign.center,
+              style: GoogleFonts.rubik(
+                fontSize: 50,
+                fontWeight: FontWeight.w500,
+              ),
             ),
             SizedBox(
               height: 40,
