@@ -32,8 +32,13 @@ class _OptionsState extends State<Options> {
         itemCount: widget.wrongright.length,
         itemBuilder: (context, position) {
           return Card(
-            margin: EdgeInsets.all(10),
+            elevation: 2,
+            margin: EdgeInsets.symmetric(vertical: 6),
             child: CheckboxListTile(
+              checkColor: Colors.blueGrey[800],
+              activeColor: Colors.blueGrey[100],
+              selectedTileColor: Colors.blueGrey[800],
+              selected: selectedIndex == position,
               title: Text('${widget.wrongright.elementAt(position)}'),
               value: selectedIndex == position,
               onChanged: (bool? newValue) {

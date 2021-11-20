@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:trivia_app/second_page.dart';
 
 class ScorePage extends StatefulWidget {
@@ -18,7 +19,6 @@ class _ScorePageState extends State<ScorePage> {
 
   @override
   void initState() {
-    // TODO: implement initState
     for (int i = 0; i < widget.correctanswerlist.length; i++) {
       if (widget.correctanswerlist.elementAt(i) ==
           widget.useranswerlist.elementAt(i)) {
@@ -31,56 +31,78 @@ class _ScorePageState extends State<ScorePage> {
 
   @override
   Widget build(BuildContext context) {
+    final TextStyle body = Theme.of(context).textTheme.bodyText1!;
+
     return Scaffold(
         appBar: AppBar(
-          title: Text('Trivia questions'),
+          elevation: 0.0,
+          backgroundColor: Colors.transparent,
+          centerTitle: true,
+          title: Text('Trivia Result'),
         ),
-        body: Container(
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.center,
-            children: [
-              SizedBox(
-                height: 250,
+        body: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Container(
+              padding: EdgeInsets.all(48),
+              decoration: BoxDecoration(
+                  shape: BoxShape.circle,
+                  color: Colors.blueGrey[800],
+                  boxShadow: [
+                    BoxShadow(
+                      color: Colors.white.withAlpha(60),
+                      blurRadius: 6.0,
+                      spreadRadius: 4.0,
+                    ),
+                  ]),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.center,
+                children: [
+                  Center(
+                    child: Text(
+                      "Score",
+                      style: GoogleFonts.lato(textStyle: body, fontSize: 30),
+                    ),
+                  ),
+                  Center(
+                    child: Text(
+                      '${count} / ${total}',
+                      style: GoogleFonts.lato(textStyle: body, fontSize: 28),
+                    ),
+                  ),
+                ],
               ),
-              Center(
-                  child: Text("Score",
-                      style: TextStyle(
-                        fontSize: 50,
-                        fontWeight: FontWeight.bold,
-                        color: Colors.black,
-                      ))),
-              Center(
-                child: Text('${count}/${total}',
-                    style: TextStyle(
-                      fontSize: 50,
-                      fontWeight: FontWeight.bold,
-                      color: Colors.black,
-                    )),
+            ),
+            SizedBox(
+              height: 90,
+            ),
+            Container(
+              width: 200,
+              child: Center(
+                child: ElevatedButton(
+                  style: ElevatedButton.styleFrom(
+                    padding: EdgeInsets.all(20),
+                    primary: Colors.blueGrey[800],
+                  ),
+                  onPressed: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => Secondpage(),
+                      ),
+                    );
+                  },
+                  child: Text(
+                    'Retake Test',
+                    style: GoogleFonts.lato(textStyle: body, fontSize: 20),
+                  ),
+                ),
               ),
-              SizedBox(
-                height: 120,
-              ),
-              Center(
-                  child: ElevatedButton(
-                      onPressed: () {
-                        Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                            builder: (context) => Secondpage(),
-                          ),
-                        );
-                      },
-                      child: Text('RETAKE TEST',
-                          style: TextStyle(
-                              fontSize: 40,
-                              fontWeight: FontWeight.bold,
-                              color: Colors.black,
-                              fontStyle: FontStyle.normal)))),
-              SizedBox(
-                height: 40,
-              )
-            ],
-          ),
+            ),
+            SizedBox(
+              height: 40,
+            )
+          ],
         ));
   }
 }

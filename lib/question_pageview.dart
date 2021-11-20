@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:trivia_app/options.dart';
 import 'package:trivia_app/question_pageview.dart';
 import 'package:trivia_app/scorepage.dart';
@@ -36,12 +37,16 @@ class _QuestionsPageViewState extends State<QuestionsPageView> {
 
   @override
   Widget build(BuildContext context) {
+    final TextStyle subtitle = Theme.of(context).textTheme.subtitle1!;
+    final TextStyle body = Theme.of(context).textTheme.bodyText1!;
+
     return PageView.builder(
       controller: _controller,
       itemCount: widget.results.length,
       onPageChanged: (newPagePosition) {
         currentPagePosition = newPagePosition;
       },
+      pageSnapping: true,
       itemBuilder: (context, index) {
         List wrongright = [];
         List wrong = widget.results.elementAt(index).incorrect_answers;
@@ -53,39 +58,48 @@ class _QuestionsPageViewState extends State<QuestionsPageView> {
         int checkedOptionPosition = wrongright.indexOf(userAnswer);
 
         return Container(
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Text(
-                'Question ${index + 1}',
-                style: TextStyle(
-                  fontSize: 20,
-                  fontWeight: FontWeight.bold,
+          child: Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 18.0, vertical: 12),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                SizedBox(
+                  height: 10,
                 ),
-              ),
-              SizedBox(
-                height: 20,
-              ),
-              Text(
-                '${widget.results.elementAt(index).question}',
-                style: TextStyle(
-                  fontSize: 30,
-                  fontWeight: FontWeight.w400,
+                Text(
+                  'Question ${index + 1}',
+                  style: GoogleFonts.oswald(
+                      textStyle: subtitle, color: Colors.yellow[800]),
                 ),
-              ),
-              Options(
-                wrongright: wrongright,
-                selectedPosition: checkedOptionPosition,
-                onOptionsSelected: (selectedOption) {
-                  print("selected item is $selectedOption");
-                  _userAnswerList[currentPagePosition] = selectedOption;
-                  print(_userAnswerList.toList().toString());
-                },
-              ),
-              Center(
-                  child: ElevatedButton(
+                SizedBox(
+                  height: 15,
+                ),
+                Text(
+                  '${widget.results.elementAt(index).question}',
+                  style: GoogleFonts.lato(textStyle: body, fontSize: 20),
+                ),
+                SizedBox(
+                  height: 20,
+                ),
+                Options(
+                  wrongright: wrongright,
+                  selectedPosition: checkedOptionPosition,
+                  onOptionsSelected: (selectedOption) {
+                    print("selected item is $selectedOption");
+                    _userAnswerList[currentPagePosition] = selectedOption;
+                    print(_userAnswerList.toList().toString());
+                  },
+                ),
+                Center(
+                  child: Container(
+                    width: 300,
+                    child: ElevatedButton(
+                      style: ElevatedButton.styleFrom(
+                        padding: EdgeInsets.all(20),
+                        primary: Colors.blueGrey[800],
+                      ),
                       onPressed: () {
-                        Navigator.push(
+                        Navigator.pushReplacement(
                           context,
                           MaterialPageRoute(
                             builder: (context) => ScorePage(
@@ -95,11 +109,21 @@ class _QuestionsPageViewState extends State<QuestionsPageView> {
                           ),
                         );
                       },
-                      child: Text('SUBMIT'))),
-              SizedBox(
-                height: 60,
-              )
-            ],
+                      child: Text(
+                        'SUBMIT',
+                        style: GoogleFonts.lato(
+                          textStyle: body,
+                          fontSize: 17,
+                        ),
+                      ),
+                    ),
+                  ),
+                ),
+                SizedBox(
+                  height: 60,
+                )
+              ],
+            ),
           ),
         );
       },

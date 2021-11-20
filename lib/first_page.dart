@@ -1,4 +1,5 @@
 import 'dart:ui';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:trivia_app/extractdata.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -12,11 +13,10 @@ class FirstPage extends StatefulWidget {
 }
 
 class _FirstPageState extends State<FirstPage> {
-
   final ButtonStyle raisedButtonStyle = ElevatedButton.styleFrom(
-    onPrimary: Colors.yellow,
+    primary: Colors.blueGrey[800],
     minimumSize: Size(88, 36),
-    padding: EdgeInsets.symmetric(horizontal: 16),
+    padding: EdgeInsets.symmetric(horizontal: 16, vertical: 16),
     shape: const RoundedRectangleBorder(
       borderRadius: BorderRadius.all(Radius.circular(2)),
     ),
@@ -26,29 +26,45 @@ class _FirstPageState extends State<FirstPage> {
     return Scaffold(
       body: Center(
         child: Column(
-          crossAxisAlignment: CrossAxisAlignment.center,
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            const Text(
-              'TRIVIA APP',
+            Text(
+              'TRIVIA  APP',
               textAlign: TextAlign.center,
-              overflow: TextOverflow.ellipsis,
-              style: TextStyle(fontWeight: FontWeight.bold, fontSize: 50),
-            ),
-            ElevatedButton(
-              style: raisedButtonStyle,
-              onPressed: () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(builder: (context) => Secondpage()),
-                );
-              },
-              child: const Text(
-                'TAKE TRIVIA ->',
-                style: TextStyle(color: Colors.black),
+              style: GoogleFonts.rubik(
+                fontSize: 35,
+                fontWeight: FontWeight.w600,
               ),
             ),
-
+            SizedBox(
+              height: 60,
+            ),
+            SizedBox(
+              width: 300,
+              child: ElevatedButton(
+                style: raisedButtonStyle,
+                onPressed: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => Secondpage()),
+                  );
+                },
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Text(
+                      'TAKE TRIVIA',
+                    ),
+                    SizedBox(
+                      width: 10,
+                    ),
+                    Icon(
+                      Icons.arrow_forward_rounded,
+                    ),
+                  ],
+                ),
+              ),
+            ),
           ],
         ),
       ),

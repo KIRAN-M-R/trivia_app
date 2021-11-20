@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:trivia_app/first_page.dart';
+import 'package:trivia_app/theme/theme_data.dart';
 
 void main() {
   runApp(const MyApp());
@@ -13,9 +14,10 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'Flutter Demo',
-      theme: ThemeData(
-        primarySwatch: Colors.blue,
-      ),
+      theme: CustomTheme.appLightTheme(context),
+      darkTheme: CustomTheme.appDarkTheme(context),
+      debugShowCheckedModeBanner: false,
+      themeMode: ThemeMode.system,
       home: FirstPage(),
     );
   }
