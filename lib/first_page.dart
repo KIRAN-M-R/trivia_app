@@ -51,7 +51,7 @@ class _FirstPageState extends State<FirstPage> {
                 onPressed: () {
                   Navigator.push(
                     context,
-                    MaterialPageRoute(builder: (context) => Secondpage()),
+                    MaterialPageRoute(builder: (context) => SecondPage()),
                   );
                 },
                 child: Row(

@@ -88,7 +88,7 @@ class _ScorePageState extends State<ScorePage> {
                     Navigator.push(
                       context,
                       MaterialPageRoute(
-                        builder: (context) => Secondpage(),
+                        builder: (context) => SecondPage(),
                       ),
                     );
                   },
