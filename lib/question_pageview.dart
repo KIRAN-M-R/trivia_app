@@ -99,15 +99,15 @@ class _QuestionsPageViewState extends State<QuestionsPageView> {
                         primary: Colors.blueGrey[800],
                       ),
                       onPressed: () {
-                        Navigator.pushReplacement(
-                          context,
-                          MaterialPageRoute(
-                            builder: (context) => ScorePage(
-                              useranswerlist: _userAnswerList,
-                              correctanswerlist: correctanswerlist,
+                        Navigator.pushAndRemoveUntil(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) => ScorePage(
+                                useranswerlist: _userAnswerList,
+                                correctanswerlist: correctanswerlist,
+                              ),
                             ),
-                          ),
-                        );
+                            (route) => false);
                       },
                       child: Text(
                         'SUBMIT',

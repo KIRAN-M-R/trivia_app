@@ -1,6 +1,6 @@
 import 'dart:ui';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:trivia_app/extractdata.dart';
+
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:trivia_app/second_page.dart';
@@ -27,17 +27,35 @@ class _FirstPageState extends State<FirstPage> {
       body: Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
+          crossAxisAlignment: CrossAxisAlignment.center,
           children: [
-            Text(
-              'TRIVIA  APP',
-              textAlign: TextAlign.center,
-              style: GoogleFonts.rubik(
-                fontSize: 35,
-                fontWeight: FontWeight.w600,
-              ),
+            Container(
+              padding: EdgeInsets.all(85),
+              decoration: BoxDecoration(
+                  shape: BoxShape.circle,
+                  color: Colors.blueGrey[800],
+                  boxShadow: [
+                    BoxShadow(
+                      color: Colors.white.withAlpha(60),
+                      blurRadius: 6.0,
+                      spreadRadius: 4.0,
+                    ),
+                  ]),
+              child: Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Text(
+                      'TRIVIA  APP',
+                      textAlign: TextAlign.center,
+                      style: GoogleFonts.rubik(
+                        fontSize: 35,
+                        fontWeight: FontWeight.w600,
+                      ),
+                    ),
+                  ]),
             ),
             SizedBox(
-              height: 60,
+              height: 40,
             ),
             SizedBox(
               width: 300,
@@ -53,7 +71,7 @@ class _FirstPageState extends State<FirstPage> {
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     Text(
-                      'TAKE TRIVIA',
+                      'TAKE QUIZ',
                     ),
                     SizedBox(
                       width: 10,
