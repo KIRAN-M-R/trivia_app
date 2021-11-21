@@ -27,11 +27,11 @@ class _FirstPageState extends State<FirstPage> {
       body: Container(
         width: double.infinity,
         child: Column(
-          // mainAxisAlignment: MainAxisAlignment.center,
-          // crossAxisAlignment: CrossAxisAlignment.center,
+          mainAxisAlignment: MainAxisAlignment.center,
+          crossAxisAlignment: CrossAxisAlignment.center,
           children: [
             SizedBox(
-              height: 300,
+              height: MediaQuery.of(context).size.height * 0.45,
             ),
             Text(
               'TRIVIA APP',
@@ -42,31 +42,31 @@ class _FirstPageState extends State<FirstPage> {
               ),
             ),
             SizedBox(
-              height: 40,
-            ),
-            SizedBox(
+              height: MediaQuery.of(context).size.height * 0.45,
               width: 300,
-              child: ElevatedButton(
-                style: raisedButtonStyle,
-                onPressed: () {
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(builder: (context) => SecondPage()),
-                  );
-                },
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    Text(
-                      'TAKE QUIZ',
-                    ),
-                    SizedBox(
-                      width: 10,
-                    ),
-                    Icon(
-                      Icons.arrow_forward_rounded,
-                    ),
-                  ],
+              child: Center(
+                child: ElevatedButton(
+                  style: raisedButtonStyle,
+                  onPressed: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(builder: (context) => SecondPage()),
+                    );
+                  },
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Text(
+                        'TAKE QUIZ',
+                      ),
+                      SizedBox(
+                        width: 10,
+                      ),
+                      Icon(
+                        Icons.arrow_forward_rounded,
+                      ),
+                    ],
+                  ),
                 ),
               ),
             ),
