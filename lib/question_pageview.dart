@@ -171,7 +171,7 @@ class _QuestionsPageViewState extends State<QuestionsPageView> {
                   ),
                   ElevatedButton(
                     style: ElevatedButton.styleFrom(
-                        padding: EdgeInsets.all(20),
+                        padding: EdgeInsets.all(10),
                         primary: Colors.blueGrey[800],
                         fixedSize:
                             Size(MediaQuery.of(context).size.width * 0.7, 50)),
